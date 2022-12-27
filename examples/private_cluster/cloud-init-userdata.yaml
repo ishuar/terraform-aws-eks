@@ -1,0 +1,41 @@
+#cloud-config
+package_upgrade: true
+runcmd:
+  - [
+      curl,
+      "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip",
+      -o,
+      "awscliv2.zip",
+    ]
+  - [unzip, -q, awscliv2.zip]
+  - [
+      sudo,
+      ./aws/install,
+      --bin-dir,
+      /usr/bin,
+      --install-dir,
+      /usr/bin,
+      --update,
+    ]
+  - [
+      curl,
+      -o,
+      kubectl,
+      "https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.13/2022-10-31/bin/linux/amd64/kubectl",
+    ]
+  - [chmod, +x, ./kubectl]
+  - mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+  - echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+  - [
+      wget,
+      -q,
+      "https://github.com/derailed/k9s/releases/download/v0.26.7/k9s_Linux_x86_64.tar.gz",
+    ]
+  - [tar, -xvf, k9s_Linux_x86_64.tar.gz]
+  - mv k9s /usr/bin/
+  - echo 'export CLUSTER=${CLUSTER}' >> ~/.bashrc
+  - echo 'export REGION=${REGION}' >> ~/.bashrc
+  - echo 'alias c="clear"' >> ~/.bashrc
+  - echo 'alias k="kubectl"' >> ~/.bashrc
+  - source ~/.bashrc
+  - aws eks --region $REGION update-kubeconfig --name $CLUSTER
