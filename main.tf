@@ -12,11 +12,7 @@ locals {
   cluster_role                   = try(aws_iam_role.this[0].arn, var.role_arn)
   cluster_encryption_policy_name = coalesce(var.cluster_encryption_policy_name, "${local.cluster_iam_role_name}-ClusterEncryption")
   dns_suffix                     = data.aws_partition.current.dns_suffix
-
-  ## hopefully we might not support china and us gov hene using aws public partition else use :   
-  # policy_arn_prefix              = "arn:${data.aws_partition.current.partition}:iam::aws:policy"
-  ## once set above needs to remove explicit dependency from endpoints and introduce implicit dependency.
-  policy_arn_prefix = "arn:${data.aws_partition.current.partition}:iam::aws:policy"
+  policy_arn_prefix              = "arn:${data.aws_partition.current.partition}:iam::aws:policy"
 }
 
 ################################################################################
@@ -165,7 +161,6 @@ resource "aws_eks_cluster" "this" {
     }
   }
 
-  ## explicit_dependency_endpoints: is used to convert explicit dependency from endpoints to implicit dependencies.
   tags = merge(
     var.tags,
     {

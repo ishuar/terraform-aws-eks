@@ -552,15 +552,3 @@ variable "create_autoscaling_service_role" {
   description = "(optional) Whehter the service link role for autoscaling service exists or not ?"
   default     = false
 }
-
-# variable "policy_enabled" {
-#   type        = bool
-#   description = "Whether policy needs to be enabled or not"
-#   default     = true
-# }
-
-# variable "policy" {
-#   type        = string
-#   description = "A valid policy JSON document. Although this is a key policy, not an IAM policy"
-#   default     = ""
-# }

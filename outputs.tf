@@ -85,4 +85,5 @@ output "global_encryption_kms_key_arn" {
 }
 output "eks_cluster_name" {
   value = local.eks_cluster.name
+  description = "Name of the eks cluster"
 }
