@@ -84,6 +84,10 @@ output "global_encryption_kms_key_arn" {
   description = "KMS Key arn used by node groups and the the eks cluster for encryption."
 }
 output "eks_cluster_name" {
-  value = local.eks_cluster.name
+  value       = local.eks_cluster.name
   description = "Name of the eks cluster"
+}
+output "eks_cluster_primary_security_group_id" {
+  value       = local.eks_cluster.vpc_config[0].cluster_security_group_id
+  description = "Primary security group id of the EKS cluster"
 }
