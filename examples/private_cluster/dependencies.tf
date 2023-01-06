@@ -1,6 +1,7 @@
 resource "aws_vpc" "eks" {
-  cidr_block = "10.0.0.0/16"
-  tags       = merge(local.tags, { Name = "vpc-eks-${local.aws_region}-01" })
+  cidr_block           = "10.0.0.0/16"
+  tags                 = merge(local.tags, { Name = "vpc-eks-${local.aws_region}-01" })
+  enable_dns_hostnames = true
 }
 
 resource "aws_subnet" "private_subnets" {
