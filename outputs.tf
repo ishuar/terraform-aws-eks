@@ -91,3 +91,11 @@ output "eks_cluster_primary_security_group_id" {
   value       = local.eks_cluster.vpc_config[0].cluster_security_group_id
   description = "Primary security group id of the EKS cluster"
 }
+output "eks_cluster_open_id_provider_arn" {
+  value = aws_iam_openid_connect_provider.this.arn
+  description = "ARN of the Open-ID provider configurred for the cluster"
+}
+output "eks_cluster_oidc_issuer" {
+  value = aws_iam_openid_connect_provider.this.url
+  description = "Issuer URL for the OpenID Connect identity provider."
+}
