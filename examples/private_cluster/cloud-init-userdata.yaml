@@ -1,5 +1,18 @@
 #cloud-config
+package_update: true
 package_upgrade: true
+
+packages:
+  - git
+  - docker
+
+groups:
+  - docker
+
+system_info:
+  default_user:
+    groups: [docker]  
+
 runcmd:
   - [
       curl,
@@ -24,15 +37,23 @@ runcmd:
       "https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.13/2022-10-31/bin/linux/amd64/kubectl",
     ]
   - [chmod, +x, ./kubectl]
-  - mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
-  - echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+  - mkdir -p /usr/local/bin && cp ./kubectl /usr/local/bin/kubectl && export PATH=$PATH:/usr/local/bin
   - [
       wget,
       -q,
       "https://github.com/derailed/k9s/releases/download/v0.26.7/k9s_Linux_x86_64.tar.gz",
     ]
   - [tar, -xvf, k9s_Linux_x86_64.tar.gz]
-  - mv k9s /usr/bin/
+  - mv k9s /usr/local/bin
+  - curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+  - [
+      wget,
+      -q,
+      "https://github.com/helmfile/helmfile/releases/download/v0.149.0/helmfile_0.149.0_linux_amd64.tar.gz",
+    ]
+  - tar -xvf helmfile_0.149.0_linux_amd64.tar.gz
+  - mv helmfile /usr/local/bin
+  - echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bashrc
   - echo 'export CLUSTER=${CLUSTER}' >> ~/.bashrc
   - echo 'export REGION=${REGION}' >> ~/.bashrc
   - echo 'alias c="clear"' >> ~/.bashrc
