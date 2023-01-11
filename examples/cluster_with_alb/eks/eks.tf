@@ -40,7 +40,7 @@ module "public_eks_with_alb" {
       max_size       = 2
       desired_size   = 1
       ami_type       = "AL2_x86_64"
-      instance_types = ["m5.large"] ## Pre-requisite for https://www.eksworkshop.com/beginner/115_sg-per-pod/09_prerequisite/
+      instance_types = ["t3.medium"] ## ["m5.large"] Pre-requisite for https://www.eksworkshop.com/beginner/115_sg-per-pod/09_prerequisite/
     }
   }
 
