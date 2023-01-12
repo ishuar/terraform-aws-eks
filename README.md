@@ -161,8 +161,11 @@ No modules.
 | <a name="output_eks_cluster_endpoint"></a> [eks\_cluster\_endpoint](#output\_eks\_cluster\_endpoint) | Endpoint for your Kubernetes API server. |
 | <a name="output_eks_cluster_id"></a> [eks\_cluster\_id](#output\_eks\_cluster\_id) | Name of the cluster. |
 | <a name="output_eks_cluster_identity"></a> [eks\_cluster\_identity](#output\_eks\_cluster\_identity) | Attribute block containing identity provider information for your cluster. Only available on Kubernetes version 1.13 and 1.14 clusters created or upgraded on or after September 3, 2019. Detailed below. |
-| <a name="output_eks_cluster_name"></a> [eks\_cluster\_name](#output\_eks\_cluster\_name) | n/a |
+| <a name="output_eks_cluster_name"></a> [eks\_cluster\_name](#output\_eks\_cluster\_name) | Name of the eks cluster |
+| <a name="output_eks_cluster_oidc_issuer"></a> [eks\_cluster\_oidc\_issuer](#output\_eks\_cluster\_oidc\_issuer) | Issuer URL for the OpenID Connect identity provider. |
+| <a name="output_eks_cluster_open_id_provider_arn"></a> [eks\_cluster\_open\_id\_provider\_arn](#output\_eks\_cluster\_open\_id\_provider\_arn) | ARN of the Open-ID provider configurred for the cluster |
 | <a name="output_eks_cluster_platform_version"></a> [eks\_cluster\_platform\_version](#output\_eks\_cluster\_platform\_version) | Platform version for the cluster. |
+| <a name="output_eks_cluster_primary_security_group_id"></a> [eks\_cluster\_primary\_security\_group\_id](#output\_eks\_cluster\_primary\_security\_group\_id) | Primary security group id of the EKS cluster |
 | <a name="output_eks_cluster_status"></a> [eks\_cluster\_status](#output\_eks\_cluster\_status) | Status of the EKS cluster. One of CREATING, ACTIVE, DELETING, FAILED. |
 | <a name="output_eks_cluster_tags_all"></a> [eks\_cluster\_tags\_all](#output\_eks\_cluster\_tags\_all) | Map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block. |
 | <a name="output_eks_cluster_vpc_config"></a> [eks\_cluster\_vpc\_config](#output\_eks\_cluster\_vpc\_config) | Configuration block argument that also includes attributes for the VPC associated with your cluster. Detailed below. |
