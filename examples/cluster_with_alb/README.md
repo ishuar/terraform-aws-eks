@@ -27,15 +27,15 @@ This directory includes the deployment of
   - Policies required for managing route 53 zone.
   - Service Account creation 
 
-- Route53 Public Hosted Zone to only restrict `external-dns` to specific hosted zone.
+- Route53 Public Hosted Zone to be managed by `external-dns`. (optional if need to manage existing route53 DNS zone)
 - Data sources for reading EKS and network configurations from [eks](./eks/) directory deployment.
 
-- Example Nginx Webservice to finalise the example which includes
+- Example Nginx Webservice to finalise the example which includes:
   - [Kubernetes Deployment](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment_v1)
-  - [Kubernetes Ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/ingress_v1) with supported `aws-load-balancer-controller` annotations. for complete list of annotations refer at [here](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/annotations/) 
+  - [Kubernetes Ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/ingress_v1) with supported `aws-load-balancer-controller` annotations. For complete list of annotations refer at [here](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/annotations/) 
   - [Kubernetes Service](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service_v1)
 
-- [poicies](./poicies/) directory, which includes the json formatt policies for `aws_loadbalancer_controller` and `external-dns` respectively.
+- [poicies](./poicies/) directory, which includes the json formatt policy for `aws_loadbalancer_controller`.
 - Security Groups for allowing inbound-outbound between required entities.
 ## Why Two Directories [`eks`](./eks/) and [`Kubernetes-alb-config`](./kubernetes-alb-config/) ?
 
