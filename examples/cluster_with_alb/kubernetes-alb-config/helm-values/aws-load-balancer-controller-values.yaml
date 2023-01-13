@@ -1,0 +1,7 @@
+# reference values : https://github.com/kubernetes-sigs/aws-load-balancer-controller/blob/main/helm/aws-load-balancer-controller/values.yaml
+
+## -- Override when using private cluster in eu-central-1 region. : https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
+# image:
+#   repository: "602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller"
+serviceAccount:
+  create: false

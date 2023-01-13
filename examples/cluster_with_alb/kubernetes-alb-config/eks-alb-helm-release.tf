@@ -7,32 +7,31 @@ resource "helm_release" "eks_alb" {
   timeout    = 200
   atomic     = true
 
+  values = [
+    file("${path.module}/helm-values/aws-load-balancer-controller-values.yaml")
+  ]
   set {
     name  = "region"
-    value = "eu-central-1"
+    value = local.aws_region
   }
-
-  set {
-    name  = "image.repository"
-    value = "602401143452.dkr.ecr.eu-central-1.amazonaws.com/amazon/aws-load-balancer-controller"
-  }
-
-  set {
-    name  = "serviceAccount.create"
-    value = "false"
-  }
-
   set {
     name  = "serviceAccount.name"
-    value = "aws-load-balancer-controller"
+    value = kubernetes_service_account.aws_load_balancer_controller.metadata.0.name
   }
 
   set {
     name  = "clusterName"
     value = data.aws_eks_cluster.alb_example.name
   }
+
+/*
+ ?  To create the correct order of terraform destroy.
+ *  policy-and-attachment -> Policy should be attached and available when removing ALB while destruction.
+ */
+ 
   depends_on = [
-    kubernetes_service_account.aws_load_balancer_controller
+    aws_iam_role_policy_attachment.alb_policy_attachment,
+    aws_iam_policy.alb_controller_policy
   ]
 }
 
