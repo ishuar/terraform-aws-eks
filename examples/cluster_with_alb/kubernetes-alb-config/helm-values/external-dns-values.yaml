@@ -1,0 +1,8 @@
+# reference values : https://github.com/kubernetes-sigs/external-dns/blob/master/charts/external-dns/values.yaml
+
+serviceAccount:
+  create: false
+# How DNS records are synchronized between sources and providers, available values are: sync, upsert-only
+# sync for full access to delete the records when respective k8s objects are deleted.
+policy: sync
+domainFilters: ["worldofcontainers.tk"]
