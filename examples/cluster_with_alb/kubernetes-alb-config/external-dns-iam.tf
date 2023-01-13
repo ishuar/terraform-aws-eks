@@ -11,23 +11,13 @@ data "aws_iam_policy_document" "external_dns" {
 
     actions = [
       "route53:ChangeResourceRecordSets",
-    ]
-
-    resources = [
-      "${aws_route53_zone.internet_alb.arn}",
-    ]
-  }
-
-  statement {
-    sid    = "externalDnsList"
-    effect = "Allow"
-    actions = [
       "route53:ListHostedZones",
       "route53:ListResourceRecordSets",
+      "route53:GetChange",
     ]
 
     resources = [
-      "${aws_route53_zone.internet_alb.arn}",
+      "*"
     ]
   }
 }
