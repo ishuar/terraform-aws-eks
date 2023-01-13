@@ -1,0 +1,20 @@
+name: Validate Pull Request
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - labeled
+      - unlabeled
+      - reopened
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mheap/github-action-required-labels@v3
+        with:
+          mode: exactly
+          count: 1
+          labels: "breaking-change,enhancement,bug,chore,documentation"
