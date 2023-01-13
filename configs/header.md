@@ -24,7 +24,7 @@ Terraform module which creates AWS EKS (Kubernetes) resources. This module makes
 
 ```hcl
 module "public_eks" {
-  source = "../../../"
+  "github.com/ishuar/terraform-eks"
 
   name                                  = "my-public-alb-cluster"
   create_eks_cluster                    = true
