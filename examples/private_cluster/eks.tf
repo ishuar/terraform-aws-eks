@@ -56,7 +56,7 @@ module "eks_private" {
       max_size       = 2
       desired_size   = 1
       ami_type       = "AL2_x86_64"
-      instance_types = ["m5.large"]
+      instance_types = ["t3.medium"]
     }
   }
 
