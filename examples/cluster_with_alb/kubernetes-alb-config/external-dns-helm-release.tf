@@ -21,7 +21,7 @@ resource "helm_release" "external_dns" {
     value = kubernetes_service_account.external_dns.metadata.0.name
   }
 
-/*
+  /*
 ?  To create the correct order of terraform destroy.
 * policy-and-attachment -> Policy should be attached and available to external-dns to have access for removing the dns records.
 * route53 dns zone      -> route53 dns zone will not be deleted untill external-dns removes the records.

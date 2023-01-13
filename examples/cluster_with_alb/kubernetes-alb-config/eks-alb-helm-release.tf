@@ -24,11 +24,11 @@ resource "helm_release" "eks_alb" {
     value = data.aws_eks_cluster.alb_example.name
   }
 
-/*
+  /*
  ?  To create the correct order of terraform destroy.
  *  policy-and-attachment -> Policy should be attached and available when removing ALB while destruction.
  */
- 
+
   depends_on = [
     aws_iam_role_policy_attachment.alb_policy_attachment,
     aws_iam_policy.alb_controller_policy
