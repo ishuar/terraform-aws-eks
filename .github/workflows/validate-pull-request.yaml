@@ -18,3 +18,11 @@ jobs:
           mode: exactly
           count: 1
           labels: "breaking-change,enhancement,bug,chore,documentation"
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: terraform formatt
+        uses: dflook/terraform-fmt-check@v1
+        with:
+          path: "${{ github.workspace }}"
