@@ -11,7 +11,7 @@ groups:
 
 system_info:
   default_user:
-    groups: [docker]  
+    groups: [docker]
 
 runcmd:
   - [
@@ -28,6 +28,7 @@ runcmd:
       /usr/bin,
       --install-dir,
       /usr/bin,
+
       --update,
     ]
   - [

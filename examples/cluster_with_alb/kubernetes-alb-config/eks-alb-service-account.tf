@@ -1,4 +1,4 @@
-# Kubernetes ALB Service Account
+# ALB Controller Kubernetes Service Account
 resource "kubernetes_service_account" "aws_load_balancer_controller" {
   metadata {
     labels = {

@@ -1,9 +1,3 @@
-/* 
-* Policy restricted to zone created in the code 
-* if want to manage all zones via external-dns
-* Use policy in ../policies/external_dns_policy.json
-*/
-
 data "aws_iam_policy_document" "external_dns" {
   statement {
     sid    = "externalDnsChange"
@@ -22,7 +16,7 @@ data "aws_iam_policy_document" "external_dns" {
   }
 }
 
-# ALB Policy JSON
+# External DNS Policy JSON
 resource "aws_iam_policy" "external_dns" {
   name   = "${local.tags["github_repo"]}-eks-external-dns"
   path   = "/"
@@ -30,7 +24,7 @@ resource "aws_iam_policy" "external_dns" {
 }
 
 #####################################
-# IRSA IAM policy for ALB ingress controller
+# IRSA IAM policy for External DNS
 #####################################
 
 data "aws_iam_policy_document" "irsa_external_dns_trust_policy_doc" {
