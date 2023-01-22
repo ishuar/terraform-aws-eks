@@ -1,4 +1,4 @@
-# Kubernetes ALB Service Account
+# External DNS Kubernetes Service Account
 resource "kubernetes_service_account" "external_dns" {
   metadata {
     labels = {
