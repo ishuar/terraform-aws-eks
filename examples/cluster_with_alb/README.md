@@ -18,21 +18,21 @@ This directory includes the deployment of the EKS cluster along with network inf
 
 ### [Kubernetes-alb-config](./kubernetes-alb-config/)
 
-This directory includes the deployment of 
+This directory includes the deployment of
 - [aws-load-balancer-controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/) as a helm release.
   - Policies required for  managing AWS load balancers.
-  - Service Account creation 
+  - Service Account creation
 
 - [external-ingress](https://github.com/kubernetes-sigs/external-dns/) as a helm release.
   - Policies required for managing route 53 zone.
-  - Service Account creation 
+  - Service Account creation
 
 - Route53 Public Hosted Zone to be managed by `external-dns`. (optional if need to manage existing route53 DNS zone)
 - Data sources for reading EKS and network configurations from [eks](./eks/) directory deployment.
 
 - Example Nginx Webservice to finalise the example which includes:
   - [Kubernetes Deployment](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment_v1)
-  - [Kubernetes Ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/ingress_v1) with supported `aws-load-balancer-controller` annotations. For complete list of annotations refer at [here](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/annotations/) 
+  - [Kubernetes Ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/ingress_v1) with supported `aws-load-balancer-controller` annotations. For complete list of annotations refer at [here](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/annotations/)
   - [Kubernetes Service](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service_v1)
 
 - [poicies](./poicies/) directory, which includes the json formatt policy for `aws_loadbalancer_controller`.
@@ -48,7 +48,7 @@ For more details refer to [terraform-provider-kubernetes with EKS](https://githu
 
 To create and update the resources defined in this Terraform configuration, run the following command in the respective directories in the following sequence.
 
-- It is must to deploy the `eks` directory configuration first. 
+- It is must to deploy the `eks` directory configuration first.
 
 Pre-requisites: Terraform must be installed, even though the code does not stop you from using any version but`>= 1.x` is recommended.
 
@@ -56,15 +56,15 @@ Pre-requisites: Terraform must be installed, even though the code does not stop 
 # clone the repository
 git clone https://github.com/ishuar/terraform-eks.git
 
-# Change to eks directory for utilising this example of eks cluster can be deployed with other means or even pre-existing 
-cd examples/cluster_with_alb
+# Change to eks directory for utilising this example of eks cluster can be deployed with other means or even pre-existing
+cd examples/cluster_with_alb/eks
 terraform init
-terraform plan 
+terraform plan
 terraform apply
 
-# Once the EKS is available , change the directory to kubernetes-alb-config 
-cd ../kubernetes-alb-config 
-terraform init 
+# Once the EKS is available , change the directory to kubernetes-alb-config
+cd ../kubernetes-alb-config
+terraform init
 terraform plan
 terraform apply
 ```
@@ -88,5 +88,5 @@ terraform destroy -auto-approve # ignore "-auto-approve" if you don't want to au
 ## Special Considerations
 
 - You have to own a domain for the nginx webservice deployment and verification , in this example I own this domain `worldofcontainers.tk`.
-- If you have the domain and it is not hosted by AWS , make sure to forward your domain resoulution to AWS nameservers which will be available as an terraform output `zone_name_servers` or in AWS route53 dns zone console view. 
+- If you have the domain and it is not hosted by AWS , make sure to forward your domain resolution to AWS nameservers. The will be available as an terraform output `zone_name_servers` via this config or in AWS route53 dns zone console view.
 - Worth reading [Setting up ExternalDNS for Services on AWS](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md) and [aws-load-balancer-controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/).
