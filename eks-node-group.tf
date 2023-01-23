@@ -6,7 +6,7 @@
 locals {
   node_group_iam_role_name = coalesce(var.node_group_iam_role_name, "${var.name}-node-group")
   cni_policy               = var.ip_family == "ipv6" ? "arn:${data.aws_partition.current.partition}:iam::${data.aws_caller_identity.current.account_id}:policy/AmazonEKS_CNI_IPv6_Policy" : "${local.policy_arn_prefix}/AmazonEKS_CNI_Policy"
-  # policy_arn_prefix coming from cluster iam role local block 
+  # policy_arn_prefix coming from cluster iam role local block
 }
 
 data "aws_iam_policy_document" "node_group_assume_role_policy" {
@@ -52,14 +52,6 @@ resource "aws_iam_role_policy_attachment" "node_group" {
 # EKS Node group
 ################################################################################
 
-locals {
-  ## Add back if need to put launch template within the module 
-  # launch_template_name = try(aws_launch_template.this[0].name, var.launch_template_name, null)
-  # Change order to set version priority before using defaults
-  # launch_template_version    = coalesce(var.launch_template_version, try(aws_launch_template.this[0].default_version, "$Default"))
-  # use_custom_launch_template = var.create_launch_template || var.launch_template_name != ""
-}
-
 resource "aws_eks_node_group" "this" {
   for_each = var.create_node_group ? var.node_groups : {}
 
@@ -67,9 +59,6 @@ resource "aws_eks_node_group" "this" {
   cluster_name  = local.eks_cluster.name
   node_role_arn = var.create_node_group_iam_role ? aws_iam_role.node_group[0].arn : each.value["node_role_arn"]
   subnet_ids    = var.subnet_ids
-
-  # subnet_ids    = each.value["subnet_ids"]
-
 
   scaling_config {
     min_size     = each.value["min_size"]
@@ -138,6 +127,6 @@ resource "aws_eks_node_group" "this" {
   )
   depends_on = [
     aws_iam_role_policy_attachment.node_group,
-    # aws_kms_grant.autoscaling_role_for_kms,
+    aws_kms_grant.autoscaling_role_for_kms,
   ]
 }

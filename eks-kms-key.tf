@@ -26,7 +26,7 @@ resource "aws_kms_alias" "this" {
   target_key_id = aws_kms_key.this[0].key_id
 }
 
-## If the AWSServiceRoleForAutoScaling is not created already in the account. 
+## If the AWSServiceRoleForAutoScaling is not created already in the account.
 resource "aws_iam_service_linked_role" "autoscaling" {
   count = local.create_global_eks_kms_key && var.create_autoscaling_service_role ? 1 : 0
 
@@ -106,4 +106,5 @@ data "aws_iam_policy_document" "autoscaling" {
     }
     resources = ["*"]
   }
+
 }
