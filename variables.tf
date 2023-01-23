@@ -84,11 +84,6 @@ variable "cluster_encryption_policy_tags" {
   default     = {}
 }
 
-variable "encryption_kms_key_arn" {
-  type        = string
-  description = "(optional) ARN of KMS key used for encryption of EKS cluster"
-  default     = null
-}
 #################
 # EKS Cluster #
 #################
@@ -195,26 +190,9 @@ variable "public_access_cidrs" {
   default     = null
 }
 
-variable "security_group_ids" {
-  type        = list(string)
-  description = "(Optional) List of security group IDs for the cross-account elastic network interfaces that Amazon EKS creates to use to allow communication between your worker nodes and the Kubernetes control plane."
-  default     = null
-}
-
 variable "subnet_ids" {
   type        = list(string)
   description = "(Required) List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane."
-}
-
-
-##################
-## SG Config ###
-##################
-
-variable "cluster_security_group_additional_rules" {
-  type        = any
-  description = "(optional) Additional security group rules associated with the security group attached to EKS cluster."
-  default     = {}
 }
 
 ##################

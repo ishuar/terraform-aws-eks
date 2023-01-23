@@ -39,6 +39,12 @@ module "eks_private" {
   ebs_optimized              = true
   enable_monitoring          = false
 
+  # Encryption Config for Cluster using Global KMS key created within the module.
+  cluster_encryption_config = [
+    {
+      resources = ["secrets"]
+    }
+  ]
   block_device_mappings = {
     xvda = {
       device_name = "/dev/xvda"
