@@ -2,12 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+### [v1.3.0](https://github.com/ishuar/terraform-aws-eks/compare/v1.2.0...v1.3.0)
+
+### Features
+
+- Optional Use of Created KMS key for encryption in module resources.
+
 ### [v1.2.0](https://github.com/ishuar/terraform-eks/compare/v1.1.0...v1.2.0)
 
 ### Features
 
 - Private cluster example updated with instance type to save costs.
-  
+
 ### Bugs
 
 - Fix Usage in Readme.
@@ -26,5 +32,5 @@ All notable changes to this project will be documented in this file.
 ### Features
 
 - Added Initial version of module.
-- Documention 
+- Documention
 - Example for a Private Cluster
