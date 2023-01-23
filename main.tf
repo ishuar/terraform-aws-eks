@@ -108,7 +108,7 @@ resource "aws_iam_policy" "cluster_encryption" {
           "kms:DescribeKey",
         ]
         Effect   = "Allow"
-        Resource = var.encryption_kms_key_arn
+        Resource = try(aws_kms_key.this[0].arn, var.cluster_encryption_config.provider_key_arn)
       },
     ]
   })
@@ -155,7 +155,7 @@ resource "aws_eks_cluster" "this" {
 
     content {
       provider {
-        key_arn = encryption_config.value.provider_key_arn
+        key_arn = try(aws_kms_key.this[0].arn, encryption_config.value.provider_key_arn)
       }
       resources = encryption_config.value.resources
     }
@@ -188,7 +188,7 @@ resource "aws_eks_cluster" "this" {
   ]
 }
 
-## Configure Open-ID provider for the cluster 
+## Configure Open-ID provider for the cluster
 data "tls_certificate" "this" {
   url = var.create_eks_cluster ? aws_eks_cluster.this[0].identity[0].oidc[0].issuer : data.aws_eks_cluster.this[0].identity[0].oidc[0].issuer
 }
@@ -213,4 +213,3 @@ resource "aws_cloudwatch_log_group" "this" {
   kms_key_id        = var.cloudwatch_log_group_kms_key_id
   tags              = var.tags
 }
-
