@@ -23,7 +23,7 @@ Terraform module which creates AWS EKS (Kubernetes) resources. This module makes
 
 ```hcl
 module "eks" {
-  source  = "github.com/ishuar/terraform-eks"
+  source  = "ishuar/eks/aws"
   version = "~> 1.0"
 
   name                                  = "my-cluster"
