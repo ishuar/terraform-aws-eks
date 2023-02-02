@@ -2,7 +2,7 @@ module "irsa_eks" {
   source  = "ishuar/eks/aws"
   version = "~> 1.0"
 
-  name                                  = "${local.tags["github_repo"]}-irsa-example" # "terraform-aws-eks-irsa-example"
+  name                                  = "${local.tags["github_repo"]}-irsa-example"
   cluster_iam_role_name                 = "${local.tags["github_repo"]}-irsa-example"
   subnet_ids                            = [aws_subnet.private_subnets["10.0.1.0/24"].id, aws_subnet.private_subnets["10.0.3.0/24"].id]
   vpc_id                                = aws_vpc.eks.id
