@@ -21,7 +21,5 @@ Before using this submodule, you will need to have the following:
 ## Usage
 
 ### Examples
-- [Minimal required options][examples]
-- [Complete options][examples]
-
-[examples]: ../../examples/irsa/main.tf
+- [Minimal required options](../../examples/irsa/main.tf)
+- [Complete options](../../examples/irsa/main.tf)
