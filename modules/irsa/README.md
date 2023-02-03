@@ -18,8 +18,6 @@ Before using this submodule, you will need to have the following:
 - Attach input `role_policy_arns` with the Role for Kubernetes Service Account.
 - Wildcard Service Account and Wildcard Namespace assumable policies. (:warning: Use With Caution :warning:)
 
-## Usage
-
 ### Examples
 - [Minimal required options](../../examples/irsa/main.tf)
 - [Complete options](../../examples/irsa/main.tf)

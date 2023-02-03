@@ -6,20 +6,16 @@ This Terraform submodule is designed to create a Helm release and an IAM role fo
 Before using this submodule, you will need to have the following:
 
 - EKS cluster deployed/running.
-- Helm installed on your local machine.
 - The Helm chart that you want to deploy, either stored locally or in a repository.
 
 ## Available Features
 
 - Helm Release with all arguments available at [helm\_release Terraform resource](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release)
-- IAM roles For Service Account
-
-## Usage
+- [IAM roles For Service Account](../irsa/README.md)
 
 ## Examples
 
-- [Minimal required options]()
-- [Complete]()
+- [AWS EKS Cluster Autoscaler](../../examples/cluster-autoscaler-helm-add-on/) as helm add-on.
 
 ## Requirements
 
