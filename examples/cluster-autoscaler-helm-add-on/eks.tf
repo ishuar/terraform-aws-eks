@@ -1,6 +1,6 @@
 module "helm_add_on_eks" {
   source  = "ishuar/eks/aws"
-  version = "~> 1.0"
+  version = "~> 1.3"
 
   name                                  = "${local.tags["github_repo"]}-helm-add-on-example"
   cluster_iam_role_name                 = "${local.tags["github_repo"]}-helm-add-on-example"
