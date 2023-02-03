@@ -1,0 +1,11 @@
+autoDiscovery:
+  clusterName: ${clusterName}
+  tags:
+    - k8s.io/cluster-autoscaler/enabled
+    - k8s.io/cluster-autoscaler/{{ .Values.autoDiscovery.clusterName }}
+    - kubernetes.io/cluster/{{ .Values.autoDiscovery.clusterName }}
+cloudProvider: aws
+rbac:
+  serviceAccount:
+    create: false
+    name: ${serviceAccountName}

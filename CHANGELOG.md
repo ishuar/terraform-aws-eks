@@ -2,13 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
-### [v1.3.0](https://github.com/ishuar/terraform-aws-eks/compare/v1.2.0...v1.3.0)
+## [v1.4.0](https://github.com/ishuar/terraform-aws-eks/compare/v1.3.0...v1.4.0)
+
+### Features
+
+- Added Submodules
+  - irsa
+  - helm-add-on
+- Added Examples for submodules.
+- Added [AWS EKS Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html) as an Helm Add-on.
+
+
+## [v1.3.0](https://github.com/ishuar/terraform-aws-eks/compare/v1.2.0...v1.3.0)
 
 ### Features
 
 - Optional Use of Created KMS key for encryption in module resources.
 
-### [v1.2.0](https://github.com/ishuar/terraform-eks/compare/v1.1.0...v1.2.0)
+## [v1.2.0](https://github.com/ishuar/terraform-eks/compare/v1.1.0...v1.2.0)
 
 ### Features
 
@@ -19,7 +30,7 @@ All notable changes to this project will be documented in this file.
 - Fix Usage in Readme.
 - Fix misleading variables descriptions.
 
-### [v1.1.0](https://github.com/ishuar/terraform-eks/compare/v1.0.0...v1.1.0)
+## [v1.1.0](https://github.com/ishuar/terraform-eks/compare/v1.0.0...v1.1.0)
 
 ### Features
 
@@ -27,7 +38,7 @@ All notable changes to this project will be documented in this file.
 - Example for ALB with aws-alb-controller and external-dns
 - Improved Docs
 
-### [v1.0.0](https://github.com/ishuar/terraform-eks/commits/v1.0.0)
+## [v1.0.0](https://github.com/ishuar/terraform-eks/commits/v1.0.0)
 
 ### Features
 
