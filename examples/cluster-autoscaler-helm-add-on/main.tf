@@ -1,6 +1,6 @@
 module "autoscaler_add_on" {
   source  = "ishuar/eks/aws//modules/helm-add-on"
-  version = "~> 1.0"
+  version = "~> 1.4"
 
   name          = "cluster-autoscaler-01"
   repository    = "https://kubernetes.github.io/autoscaler"
