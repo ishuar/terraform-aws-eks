@@ -65,11 +65,11 @@ resource "helm_release" "this" {
 module "irsa" {
   source = "../irsa"
 
-  # Required
+  # Required if var.enable_irsa is set to true
   oidc_issuer_url      = var.oidc_issuer_url
   service_account_name = var.service_account_name
 
-  # global controller
+  # global controller, only enables this module resources if set to true. default value if false.
   enable_irsa = var.enable_irsa
 
   # optional
