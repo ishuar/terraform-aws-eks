@@ -69,7 +69,7 @@ module "irsa" {
   oidc_issuer_url      = var.oidc_issuer_url
   service_account_name = var.service_account_name
 
-  # global controller, only enables this module resources if set to true. default value if false.
+  # global controller, only enables this module resources if set to true. default value is false.
   enable_irsa = var.enable_irsa
 
   # optional
