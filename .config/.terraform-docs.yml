@@ -1,6 +1,6 @@
 formatter: md
-header-from: "./configs/header.md"
-footer-from: "./configs/footer.md"
+header-from: "./.config/header.md"
+footer-from: "./.config/footer.md"
 output:
   file: README.md
   mode: replace
