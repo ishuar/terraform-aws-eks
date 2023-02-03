@@ -1,7 +1,8 @@
 data "aws_caller_identity" "current" {}
 
 module "complete_irsa" {
-  source = "../../modules/irsa"
+  source  = "ishuar/eks/aws//modules/irsa"
+  version = "~> 1.4"
 
   enable_irsa                         = true
   oidc_issuer_url                     = module.irsa_eks.eks_cluster_oidc_issuer
@@ -26,7 +27,8 @@ module "complete_irsa" {
 }
 
 module "minimal_irsa" {
-  source = "../../modules/irsa"
+  source  = "ishuar/eks/aws//modules/irsa"
+  version = "~> 1.4"
 
   oidc_issuer_url      = module.irsa_eks.eks_cluster_oidc_issuer
   service_account_name = local.service_account_names.minimal_service_account_name
