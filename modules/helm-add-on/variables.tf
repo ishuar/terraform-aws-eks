@@ -245,13 +245,14 @@ variable "create_namespace" {
 
 variable "enable_irsa" {
   type        = bool
-  description = "Whether to use IRSA module for helm release deployment or not? If set to false then all IRSA module resources are disabled."
+  description = "(optional) Whether to use IRSA module for helm release deployment or not? If set to false then all IRSA module resources are disabled."
   default     = false
 }
 
 variable "oidc_issuer_url" {
   type        = string
-  description = "(Required)Issuer URL for the OpenID Connect identity provider."
+  description = "(optional) **Required if enable_irsa is set to true.**. Issuer URL for the OpenID Connect identity provider."
+  default     = ""
 }
 
 variable "irsa_role_name" {
@@ -338,7 +339,8 @@ variable "service_account_annotations" {
 
 variable "service_account_name" {
   type        = string
-  description = "(Required) Service Account Name if needs to create new via terraform or from the helm chart/release created service account name for IRSA assume policy."
+  description = "(optional) **Required if enable_irsa is set to true.** .Service Account Name used when created via terraform or from the helm chart/release created service account name for IRSA assume policy."
+  default     = ""
 }
 
 variable "automount_service_account_token" {
