@@ -2,7 +2,7 @@
 
 Welcome to the Terraform EKS Module!
 
-Terraform module which creates AWS EKS (Kubernetes) resources. This module makes it easy to create and manage an EKS cluster on AWS, including all necessary resources such as VPC, subnets, and worker nodes. The example directory shows how to use the module in a real-world scenario.This module is versioned following semantic versioning. We would love to hear your feedback and see how you're using the module. Please feel free to open an issue on this sitory if you have any questions or suggestions.
+Terraform module which creates AWS EKS (Kubernetes) resources. This module makes it easy to create and manage an EKS cluster on AWS, with an example terraform configuration for all necessary resources such as VPC, subnets,etc. This module in the current state only focus on [Managed node groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html) concept of worker nodes. The example directory shows how to use the module in a real-world scenario. This module is versioned following semantic versioning. I would love to hear your feedback and see how you're using the module. Please feel free to open an issue on this repository if you have any questions or suggestions.
 
 > :star: This module is motivated from [terraform-aws-eks](https://github.com/terraform-aws-modules/terraform-aws-eks) :star:
 
