@@ -1,6 +1,3 @@
-## Test optional variables feature from tf 1.3 once module is functional.
-## Module Motivated from : https://github.com/terraform-aws-modules/terraform-aws-eks
-
 data "aws_partition" "current" {}
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
@@ -127,7 +124,7 @@ data "aws_eks_cluster" "this" {
 
 # ref: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster
 
-#tfsec:ignore:aws-eks-encrypt-secrets ## As kms key arn can not be added to defaults variable value example is added in test case.
+#tfsec:ignore:aws-eks-encrypt-secrets
 #tfsec:ignore:aws-eks-enable-control-plane-logging
 resource "aws_eks_cluster" "this" {
   count = var.create_eks_cluster ? 1 : 0

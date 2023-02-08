@@ -1,7 +1,3 @@
-################################################################################
-# Launch template
-################################################################################
-
 locals {
   launch_template_name = coalesce(var.launch_template_name, "${var.name}-node-group")
   security_group_ids   = compact(concat([aws_eks_cluster.this[0].vpc_config[0].cluster_security_group_id], var.cluster_additional_security_group_ids))
