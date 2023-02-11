@@ -1,5 +1,6 @@
 module "eks_private" {
-  source = "../../"
+  source  = "ishuar/eks/aws"
+  version = "~> 1.3"
 
   name                                  = "${local.tags["github_repo"]}-repo-private-cluster"
   create_eks_cluster                    = true

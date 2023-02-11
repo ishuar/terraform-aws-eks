@@ -5,12 +5,6 @@ terraform {
       version = "~> 4.0"
     }
   }
-  backend "s3" {
-    bucket         = "ishuar-terraform"
-    key            = "eks-with-alb-k8s"
-    region         = "eu-central-1"
-    dynamodb_table = "ishuar"
-  }
 }
 
 provider "aws" {
@@ -20,13 +14,21 @@ provider "aws" {
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.alb_example.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.alb_example.certificate_authority[0].data)
-  token                  = data.aws_eks_cluster_auth.alb_example.token
+  exec {
+    api_version = "client.authentication.k8s.io/v1beta1"
+    args        = ["eks", "get-token", "--cluster-name", local.cluster_name]
+    command     = "aws"
+  }
 }
 
 provider "helm" {
   kubernetes {
     host                   = data.aws_eks_cluster.alb_example.endpoint
     cluster_ca_certificate = base64decode(data.aws_eks_cluster.alb_example.certificate_authority[0].data)
-    token                  = data.aws_eks_cluster_auth.alb_example.token
+    exec {
+      api_version = "client.authentication.k8s.io/v1beta1"
+      args        = ["eks", "get-token", "--cluster-name", local.cluster_name]
+      command     = "aws"
+    }
   }
 }
