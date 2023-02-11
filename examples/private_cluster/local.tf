@@ -24,7 +24,7 @@ locals {
   tags = {
     provisioner = "terraform"
     module      = "aws-eks"
-    github_repo = "terraform-eks"
+    github_repo = "terraform-aws-eks"
   }
 
 }
