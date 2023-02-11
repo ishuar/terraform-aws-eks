@@ -34,7 +34,7 @@ module "eks" {
   cluster_iam_role_name                 = "my-cluster-role"
   subnet_ids                            = ["subnet-abcde012", "subnet-bcde012a"]
   vpc_id                                = "vpc-1234556abcdef"
-  cluster_additional_security_group_ids = [sg-123456abcdefg]
+  cluster_additional_security_group_ids = ["sg-123456abcdefg"]
 
   ## Create Global KMS key for node and EKS cluster encryption.
   create_encryption_kms_key = true
