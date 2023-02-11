@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.5.0](https://github.com/ishuar/terraform-aws-eks/compare/v1.4.1...v1.5.0)
+
+### Bug
+
+- Made examples `private_cluster` and `cluster_with_alb` deployable without any changes.
+
 ## [v1.4.1](https://github.com/ishuar/terraform-aws-eks/compare/v1.4.0...v1.4.1)
 
 ### Bug
