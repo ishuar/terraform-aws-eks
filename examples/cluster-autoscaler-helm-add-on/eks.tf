@@ -3,6 +3,7 @@ module "helm_add_on_eks" {
   version = "~> 1.3"
 
   name                                  = "${local.tags["github_repo"]}-helm-add-on-example"
+  cluster_version                       = "1.24"
   cluster_iam_role_name                 = "${local.tags["github_repo"]}-helm-add-on-example"
   subnet_ids                            = [aws_subnet.private_subnets["10.0.1.0/24"].id, aws_subnet.private_subnets["10.0.3.0/24"].id]
   vpc_id                                = aws_vpc.eks.id
