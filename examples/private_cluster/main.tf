@@ -3,6 +3,7 @@ module "eks_private" {
   version = "~> 1.3"
 
   name                                  = "${local.tags["github_repo"]}-repo-private-cluster"
+  cluster_version                       = "1.24"
   create_eks_cluster                    = true
   create_cluster_iam_role               = true
   attach_cluster_encryption_policy      = true

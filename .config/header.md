@@ -28,6 +28,7 @@ module "eks" {
   version = "~> 1.0"
 
   name                                  = "my-cluster"
+  cluster_version                       = "1.24"
   create_eks_cluster                    = true
   create_cluster_iam_role               = true
   attach_cluster_encryption_policy      = true
